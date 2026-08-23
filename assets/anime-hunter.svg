@@ -1,0 +1,11 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1100" fill="#050505"/>
+  <circle cx="450" cy="380" r="270" fill="#f7f7f7" opacity=".08"/>
+  <path d="M450 96c148 0 278 99 309 238-23 252-126 398-309 482-183-84-286-230-309-482C172 195 302 96 450 96Z" fill="#111" stroke="#d8d8d8" stroke-width="8"/>
+  <path d="M262 333c80-45 158-52 234-20-34 97-90 145-168 140-44-24-66-64-66-120ZM638 333c-80-45-158-52-234-20 34 97 90 145 168 140 44-24 66-64 66-120Z" fill="#030303" stroke="#c00613" stroke-width="8"/>
+  <path d="M450 408 519 627 450 740 381 627 450 408Z" fill="#c00613"/>
+  <path d="M228 609c93 18 167 69 222 153 55-84 129-135 222-153M198 276 76 188M702 276l122-88M208 738 80 838M692 738l128 100" stroke="#f7f7f7" stroke-width="9" stroke-linecap="round"/>
+  <path d="M356 220c61-42 130-58 207-48M312 648c90 32 183 32 276 0" stroke="#787878" stroke-width="8" stroke-linecap="round"/>
+  <path d="M314 830h272l74 176H240l74-176Z" fill="#0d0d0d" stroke="#d8d8d8" stroke-width="7"/>
+  <text x="450" y="1017" text-anchor="middle" fill="#d8d8d8" font-family="Arial, sans-serif" font-size="32" font-weight="900">HUNTER PROTOCOL</text>
+</svg>

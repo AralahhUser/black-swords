@@ -1,0 +1,10 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="1100" fill="#050505"/>
+  <circle cx="452" cy="310" r="250" fill="#c00613" opacity=".18"/>
+  <path d="M450 82 518 245 694 163 604 333 792 390 599 456 695 644 523 544 450 1014 376 544 204 644 301 456 108 390 296 333 206 163 383 245 450 82Z" fill="#0d0d0d" stroke="#f7f7f7" stroke-width="6"/>
+  <path d="M450 188 494 306 622 263 550 379 680 424 541 466 592 604 477 529 450 806 421 529 306 604 358 466 219 424 349 379 277 263 406 306 450 188Z" fill="#111" stroke="#c00613" stroke-width="8"/>
+  <path d="M450 252c-88 0-154 72-154 162 0 63 34 117 84 143l70 315 70-315c51-26 84-80 84-143 0-90-66-162-154-162Z" fill="#030303" stroke="#d8d8d8" stroke-width="7"/>
+  <path d="M350 406c67-46 134-49 201-9M360 488c61 36 121 36 180 0" stroke="#c00613" stroke-width="12" stroke-linecap="round"/>
+  <path d="M289 686c-75-5-138 26-190 93M612 686c75-5 138 26 190 93M283 251 183 104M617 251 718 104" stroke="#f7f7f7" stroke-width="8" stroke-linecap="round"/>
+  <text x="450" y="1017" text-anchor="middle" fill="#d8d8d8" font-family="Arial, sans-serif" font-size="32" font-weight="900">KAIJU SIGNAL</text>
+</svg>

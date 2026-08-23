@@ -1,0 +1,31 @@
+<svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="redGlow" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#c00613" stop-opacity=".62"/>
+      <stop offset=".42" stop-color="#c00613" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steel" x1="175" y1="77" x2="750" y2="966" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7f7f7"/>
+      <stop offset=".22" stop-color="#777"/>
+      <stop offset=".55" stop-color="#141414"/>
+      <stop offset="1" stop-color="#f7f7f7"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+  <rect width="900" height="1100" fill="#030303"/>
+  <ellipse cx="460" cy="488" rx="370" ry="450" fill="url(#redGlow)" filter="url(#blur)"/>
+  <path d="M454 80 527 257 724 154 610 352 824 404 604 475 720 682 525 575 452 1005 382 577 180 690 301 472 80 403 296 349 181 154 381 257 454 80Z" fill="#070707" stroke="url(#steel)" stroke-width="7"/>
+  <path d="M454 181 500 310 646 252 551 387 697 432 544 485 611 632 486 552 454 818 417 552 293 632 360 485 207 432 353 387 258 252 408 310 454 181Z" fill="#111" stroke="#c00613" stroke-width="5"/>
+  <path d="M454 314c56 0 102 48 102 108 0 41-21 77-53 96l-49 224-48-224c-33-19-54-55-54-96 0-60 46-108 102-108Z" fill="#020202" stroke="#f7f7f7" stroke-width="5"/>
+  <path d="M389 438c45 17 87 18 130 0M410 395l44 37 45-37M351 309l-83-123M557 309l84-123M269 706l101-134M641 706 537 571" stroke="#c00613" stroke-width="8" stroke-linecap="round"/>
+  <g opacity=".66" stroke="#d8d8d8" stroke-width="3">
+    <path d="M143 514c137-49 237-48 311-2 86-47 187-46 304 0"/>
+    <path d="M178 594c112-44 204-46 276-5 84-41 174-39 270 5"/>
+    <path d="M225 284c82 58 151 89 229 92 82-3 151-34 229-92"/>
+  </g>
+  <text x="450" y="1010" text-anchor="middle" fill="#f7f7f7" font-family="Cinzel, Georgia, serif" font-size="48" font-weight="900">BLACK SWORDS</text>
+  <text x="450" y="1058" text-anchor="middle" fill="#c00613" font-family="Arial, sans-serif" font-size="18" font-weight="900">KAIJU / GRIMOIRE / HUNTER</text>
+</svg>
