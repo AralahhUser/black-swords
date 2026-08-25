@@ -128,11 +128,42 @@ img {
 }
 
 .hero-bg {
+  position: relative;
   grid-column: 2;
   min-height: 720px;
   background:
-    linear-gradient(90deg, rgba(247,246,242,.86), rgba(247,246,242,.18) 34%, rgba(23,23,23,.16)),
-    url("./assets/hero-black-swords-bg.png") center / cover no-repeat;
+    linear-gradient(90deg, rgba(247,246,242,.86), rgba(247,246,242,.2) 38%, rgba(23,23,23,.08)),
+    repeating-linear-gradient(90deg, transparent 0 42px, rgba(23,23,23,.045) 42px 43px),
+    linear-gradient(135deg, var(--mist), var(--paper));
+}
+
+.hero-bg::before,
+.hero-bg::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-bg::before {
+  right: clamp(28px, 8vw, 128px);
+  top: 20%;
+  width: min(30vw, 360px);
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, transparent 46%, var(--orange) 46% 52%, transparent 52%),
+    radial-gradient(circle at 68% 32%, var(--yellow) 0 9%, transparent 10%),
+    var(--paper);
+}
+
+.hero-bg::after {
+  right: clamp(54px, 14vw, 220px);
+  bottom: 18%;
+  width: min(20vw, 260px);
+  height: min(20vw, 260px);
+  border: 2px solid var(--blue);
+  transform: rotate(45deg);
+  opacity: .8;
 }
 
 .hero-center {
@@ -323,10 +354,11 @@ img {
   position: relative;
   display: grid;
   min-height: 390px;
-  place-items: center;
+  place-items: end start;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(232,111,25,.08), transparent 42%),
+    linear-gradient(135deg, rgba(232,111,25,.1), transparent 44%),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(23,23,23,.05) 30px 31px),
     var(--mist);
 }
 
@@ -334,21 +366,33 @@ img {
   min-height: 520px;
 }
 
-.product-media img {
-  width: min(78%, 360px);
-  max-height: 360px;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 22px rgba(23,23,23,.18));
-  transition: transform .25s ease;
+.product-media::before {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  content: attr(data-code);
+  color: rgba(23,23,23,.08);
+  font-family: Cinzel, serif;
+  font-size: clamp(58px, 8vw, 118px);
+  font-weight: 900;
+  line-height: .78;
+  text-transform: uppercase;
 }
 
-.limited-product .product-media img {
-  width: min(84%, 460px);
-  max-height: 460px;
+.product-media::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(42%, 180px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(23,23,23,.18);
+  content: "";
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.product-card:hover .product-media img {
-  transform: translateY(-4px);
+.limited-product .product-media::after {
+  width: min(46%, 240px);
+  border-color: rgba(232,111,25,.45);
 }
 
 .product-media span {
@@ -363,6 +407,15 @@ img {
   font-size: 10px;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.product-media span::after {
+  display: block;
+  width: 34px;
+  height: 3px;
+  margin-top: 10px;
+  background: var(--orange);
+  content: "";
 }
 
 .limited-product .product-media span {
@@ -574,12 +627,6 @@ img {
   .limited-product .product-media,
   .product-media {
     min-height: 360px;
-  }
-
-  .limited-product .product-media img,
-  .product-media img {
-    width: 86%;
-    max-height: 330px;
   }
 
   .limited-product .product-info {
