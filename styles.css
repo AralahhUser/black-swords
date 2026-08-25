@@ -334,6 +334,10 @@ img {
   gap: 16px;
 }
 
+.dbz-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .product-card {
   min-width: 0;
   border: 1px solid var(--line);
@@ -393,6 +397,27 @@ img {
 .limited-product .product-media::after {
   width: min(46%, 240px);
   border-color: rgba(232,111,25,.45);
+}
+
+.media-trunks {
+  background:
+    linear-gradient(135deg, rgba(23,74,126,.12), transparent 44%),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(23,23,23,.05) 30px 31px),
+    var(--mist);
+}
+
+.media-gohan {
+  background:
+    linear-gradient(135deg, rgba(239,191,50,.16), transparent 44%),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(23,23,23,.05) 30px 31px),
+    var(--mist);
+}
+
+.media-broly {
+  background:
+    linear-gradient(135deg, rgba(232,111,25,.15), transparent 44%),
+    repeating-linear-gradient(90deg, transparent 0 30px, rgba(23,23,23,.05) 30px 31px),
+    var(--mist);
 }
 
 .product-media span {
@@ -528,6 +553,10 @@ img {
 
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dbz-grid {
+    grid-template-columns: 1fr;
   }
 }
 
