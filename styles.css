@@ -241,7 +241,7 @@ img {
   align-content: center;
   justify-items: start;
   width: 100%;
-  max-width: 620px;
+  max-width: 720px;
   padding: clamp(70px, 10vw, 132px) clamp(20px, 5vw, 70px);
   text-align: left;
 }
@@ -260,22 +260,22 @@ img {
 }
 
 .hero-title {
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 0 22px;
   color: var(--coal);
   font-family: var(--display);
-  font-size: 104px;
+  font-size: 54px;
   font-weight: 700;
-  line-height: .78;
+  line-height: .82;
 }
 
 .hero-subtitle {
-  max-width: 420px;
+  max-width: 520px;
   margin: 0;
   color: var(--muted);
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 700;
-  line-height: 1;
+  line-height: .92;
 }
 
 .hero-footer {
@@ -702,12 +702,12 @@ img {
   }
 
   .hero-title {
-    font-size: 52px;
-    line-height: .8;
+    font-size: 34px;
+    line-height: .86;
   }
 
   .hero-subtitle {
-    font-size: 22px;
+    font-size: 24px;
     line-height: .95;
   }
 
