@@ -8,7 +8,7 @@
   --blue: #174a7e;
   --yellow: #efbf32;
   --line: #d8d8d2;
-  --display: "Bodoni Moda", Didot, "Bodoni 72", "Times New Roman", serif;
+  --display: "Teko", "Arial Narrow", Impact, sans-serif;
 }
 
 * {
@@ -24,8 +24,11 @@ body {
   margin: 0;
   background: var(--warm);
   color: var(--coal);
-  font-family: Inter, Arial, sans-serif;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 600;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 body.intro-active {
@@ -94,9 +97,8 @@ img {
   border: 1px solid rgba(247,246,242,.28);
   background: rgba(23,23,23,.68);
   color: var(--warm);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .intro-play {
@@ -139,8 +141,7 @@ img {
 .brand {
   justify-self: center;
   gap: 10px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .brand-mark {
@@ -158,25 +159,26 @@ img {
 
 .brand-name {
   color: var(--coal);
-  font-size: 13px;
-  letter-spacing: .08em;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: .9;
 }
 
 .main-nav {
   justify-self: start;
   gap: clamp(14px, 3vw, 34px);
   color: var(--coal);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .cart-link {
   justify-self: end;
   color: var(--coal);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .main-nav a:hover,
@@ -287,20 +289,18 @@ img {
   margin: 0 0 22px;
   color: var(--coal);
   font-family: var(--display);
-  font-size: clamp(46px, 7.2vw, 104px);
-  font-weight: 900;
-  line-height: .86;
-  text-transform: uppercase;
+  font-size: 104px;
+  font-weight: 700;
+  line-height: .78;
 }
 
 .hero-subtitle {
   max-width: 420px;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(15px, 1.7vw, 20px);
-  font-weight: 800;
-  line-height: 1.35;
-  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .hero-footer {
@@ -312,9 +312,9 @@ img {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   color: var(--muted);
-  font-size: 11px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .social-links {
@@ -350,9 +350,9 @@ img {
 
 .marquee span {
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .drop-section {
@@ -374,9 +374,9 @@ img {
 .kicker {
   margin: 0;
   color: var(--orange);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .section-heading h2 {
@@ -384,9 +384,9 @@ img {
   margin: 0;
   color: var(--coal);
   font-family: var(--display);
-  font-size: clamp(34px, 5vw, 72px);
-  line-height: .94;
-  text-transform: uppercase;
+  font-size: 78px;
+  font-weight: 700;
+  line-height: .8;
 }
 
 .drop-group + .drop-group {
@@ -405,9 +405,9 @@ img {
 
 .group-heading span {
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .limited-product {
@@ -467,10 +467,9 @@ img {
   content: attr(data-code);
   color: rgba(23,23,23,.08);
   font-family: var(--display);
-  font-size: clamp(58px, 8vw, 118px);
-  font-weight: 900;
+  font-size: 118px;
+  font-weight: 700;
   line-height: .78;
-  text-transform: uppercase;
 }
 
 .product-media::after {
@@ -519,9 +518,9 @@ img {
   border: 1px solid var(--line);
   background: rgba(247,246,242,.88);
   color: var(--coal);
-  font-size: 10px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 .product-media span::after {
@@ -558,14 +557,14 @@ img {
   margin: 0;
   color: var(--coal);
   font-family: var(--display);
-  font-size: 18px;
+  font-size: 32px;
+  font-weight: 700;
   line-height: 1;
-  text-transform: uppercase;
 }
 
 .limited-product .product-info h3 {
   max-width: 480px;
-  font-size: clamp(38px, 5vw, 74px);
+  font-size: 74px;
   line-height: .92;
 }
 
@@ -573,9 +572,9 @@ img {
   max-width: 430px;
   margin: 0;
   color: var(--muted);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.42;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.05;
 }
 
 .product-buy {
@@ -585,9 +584,9 @@ img {
   border: 1px solid var(--coal);
   background: var(--coal);
   color: var(--warm);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: .9;
   transition: background .2s ease, border-color .2s ease, transform .2s ease;
 }
 
@@ -605,9 +604,9 @@ img {
   border-top: 1px solid var(--line);
   background: var(--paper);
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: .9;
 }
 
 @keyframes slide {
@@ -686,7 +685,7 @@ img {
 
   .brand-name {
     display: inline;
-    font-size: 11px;
+    font-size: 18px;
   }
 
   .brand-mark {
@@ -699,7 +698,7 @@ img {
   }
 
   .cart-link {
-    font-size: 11px;
+    font-size: 18px;
   }
 
   .hero-section {
@@ -728,11 +727,13 @@ img {
   }
 
   .hero-title {
-    font-size: clamp(36px, 12vw, 56px);
+    font-size: 52px;
+    line-height: .8;
   }
 
   .hero-subtitle {
-    font-size: 13px;
+    font-size: 22px;
+    line-height: .95;
   }
 
   .hero-footer {
@@ -757,7 +758,8 @@ img {
   }
 
   .section-heading h2 {
-    font-size: 34px;
+    font-size: 46px;
+    line-height: .82;
   }
 
   .group-heading {
@@ -779,11 +781,23 @@ img {
   }
 
   .limited-product .product-info h3 {
-    font-size: 36px;
+    font-size: 46px;
   }
 
   .product-info h3 {
-    font-size: 20px;
+    font-size: 34px;
+  }
+
+  .product-info p {
+    font-size: 22px;
+  }
+
+  .product-media::before {
+    font-size: 88px;
+  }
+
+  .product-media span {
+    font-size: 17px;
   }
 
   .site-footer {
