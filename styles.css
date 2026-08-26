@@ -203,38 +203,13 @@ img {
   grid-column: 2;
   min-height: 720px;
   background:
-    linear-gradient(90deg, rgba(247,246,242,.9), rgba(247,246,242,.2) 38%, rgba(23,23,23,.08)),
-    repeating-linear-gradient(90deg, transparent 0 42px, rgba(23,23,23,.045) 42px 43px),
+    linear-gradient(90deg, rgba(247,246,242,.62), rgba(247,246,242,.08) 36%, rgba(23,23,23,.02)),
     url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
 }
 
 .hero-bg::before,
 .hero-bg::after {
-  position: absolute;
-  content: "";
-  pointer-events: none;
-}
-
-.hero-bg::before {
-  right: clamp(28px, 8vw, 128px);
-  top: 20%;
-  width: min(30vw, 360px);
-  aspect-ratio: 1;
-  border: 1px solid var(--line);
-  background:
-    linear-gradient(135deg, transparent 46%, var(--orange) 46% 52%, transparent 52%),
-    radial-gradient(circle at 68% 32%, var(--yellow) 0 9%, transparent 10%),
-    var(--paper);
-}
-
-.hero-bg::after {
-  right: clamp(54px, 14vw, 220px);
-  bottom: 18%;
-  width: min(20vw, 260px);
-  height: min(20vw, 260px);
-  border: 2px solid var(--blue);
-  transform: rotate(45deg);
-  opacity: .8;
+  display: none;
 }
 
 .hero-logo-card {
@@ -627,7 +602,7 @@ img {
     grid-column: 1;
     grid-row: 1;
     min-height: 54svh;
-    opacity: .34;
+    opacity: .62;
   }
 
   .hero-logo-card {
@@ -708,7 +683,7 @@ img {
   .hero-bg {
     min-height: 100%;
     background-position: center top;
-    opacity: .28;
+    opacity: .64;
   }
 
   .hero-logo-card {
