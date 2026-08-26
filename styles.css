@@ -144,16 +144,16 @@ img {
 }
 
 .brand-mark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid var(--coal);
-  background: var(--coal);
-  color: var(--warm);
-  font-family: var(--display);
-  font-size: 11px;
-  line-height: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: 58px;
+  height: 30px;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brand-name {
@@ -241,20 +241,20 @@ img {
   top: clamp(86px, 13vh, 148px);
   z-index: 2;
   display: grid;
-  width: min(34vw, 420px);
-  aspect-ratio: 1.42;
+  width: min(38vw, 460px);
+  aspect-ratio: 2.1;
   place-items: center;
-  padding: clamp(14px, 2vw, 28px);
-  border: 1px solid rgba(23,23,23,.12);
-  background: rgba(255,254,250,.92);
-  box-shadow: 0 22px 70px rgba(23,23,23,.16);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .hero-logo-card img {
   width: 100%;
   max-height: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply;
+  filter: drop-shadow(0 16px 24px rgba(247,246,242,.45));
 }
 
 .hero-center {
@@ -270,17 +270,16 @@ img {
 }
 
 .hero-symbol {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  place-items: center;
+  display: block;
+  width: clamp(92px, 12vw, 150px);
+  height: auto;
   margin-bottom: 28px;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  color: var(--blue);
-  font-family: var(--display);
-  font-size: 14px;
-  font-weight: 900;
+}
+
+.hero-symbol img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero-title {
@@ -635,7 +634,7 @@ img {
   .hero-logo-card {
     right: 50%;
     top: 86px;
-    width: min(72vw, 360px);
+    width: min(74vw, 380px);
     transform: translateX(50%);
   }
 
@@ -691,9 +690,8 @@ img {
   }
 
   .brand-mark {
-    width: 30px;
-    height: 30px;
-    font-size: 10px;
+    width: 46px;
+    height: 24px;
   }
 
   .main-nav {
@@ -716,8 +714,7 @@ img {
 
   .hero-logo-card {
     top: 78px;
-    width: min(76vw, 320px);
-    padding: 12px;
+    width: min(82vw, 340px);
   }
 
   .hero-center {
@@ -726,8 +723,7 @@ img {
   }
 
   .hero-symbol {
-    width: 40px;
-    height: 40px;
+    width: 96px;
     margin-bottom: 18px;
   }
 
