@@ -12,6 +12,11 @@ const closeIntro = () => {
 
 if (intro && introVideo) {
   document.body.classList.add("intro-active");
+  introVideo.muted = true;
+  introVideo.defaultMuted = true;
+  introVideo.autoplay = true;
+  introVideo.setAttribute("muted", "");
+  introVideo.setAttribute("playsinline", "");
 
   const attemptAutoplay = introVideo.play();
 
