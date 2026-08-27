@@ -90,7 +90,6 @@ img {
   box-shadow: 0 0 0 1px rgba(247,246,242,.14), 0 34px 90px rgba(0,0,0,.42);
 }
 
-.intro-play,
 .intro-skip {
   position: absolute;
   z-index: 2;
@@ -99,15 +98,6 @@ img {
   color: var(--warm);
   font-size: 18px;
   font-weight: 700;
-}
-
-.intro-play {
-  display: none;
-  padding: 16px 28px;
-}
-
-.intro-screen.needs-play .intro-play {
-  display: inline-flex;
 }
 
 .intro-skip {

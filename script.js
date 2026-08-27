@@ -1,7 +1,6 @@
 const intro = document.querySelector("[data-intro]");
 const introVideo = document.querySelector("[data-intro-video]");
 const introSkip = document.querySelector("[data-intro-skip]");
-const introPlay = document.querySelector("[data-intro-play]");
 
 const closeIntro = () => {
   if (!intro) return;
@@ -15,21 +14,16 @@ if (intro && introVideo) {
   introVideo.muted = true;
   introVideo.defaultMuted = true;
   introVideo.autoplay = true;
+  introVideo.volume = 0;
   introVideo.setAttribute("muted", "");
   introVideo.setAttribute("playsinline", "");
 
   const attemptAutoplay = introVideo.play();
 
   if (attemptAutoplay) {
-    attemptAutoplay.catch(() => {
-      intro.classList.add("needs-play");
-    });
+    attemptAutoplay.catch(closeIntro);
   }
 
   introVideo.addEventListener("ended", closeIntro);
   introSkip?.addEventListener("click", closeIntro);
-  introPlay?.addEventListener("click", () => {
-    intro.classList.remove("needs-play");
-    introVideo.play();
-  });
 }
