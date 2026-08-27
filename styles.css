@@ -203,7 +203,8 @@ img {
   grid-column: 2;
   min-height: 720px;
   background:
-    linear-gradient(90deg, rgba(247,246,242,.62), rgba(247,246,242,.08) 36%, rgba(23,23,23,.02)),
+    linear-gradient(90deg, rgba(247,246,242,1) 0%, rgba(247,246,242,.94) 12%, rgba(247,246,242,.62) 28%, rgba(247,246,242,.16) 48%, rgba(247,246,242,0) 66%),
+    linear-gradient(180deg, rgba(247,246,242,.08), rgba(247,246,242,.18)),
     url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
 }
 
@@ -602,6 +603,9 @@ img {
     grid-column: 1;
     grid-row: 1;
     min-height: 54svh;
+    background:
+      linear-gradient(180deg, rgba(247,246,242,.1) 0%, rgba(247,246,242,.22) 58%, rgba(247,246,242,.34) 100%),
+      url("./assets/black-swords-cover.jpeg") center top / cover no-repeat;
     opacity: .62;
   }
 
@@ -682,7 +686,6 @@ img {
 
   .hero-bg {
     min-height: 100%;
-    background-position: center top;
     opacity: .64;
   }
 
