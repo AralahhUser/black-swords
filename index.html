@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,7 +42,7 @@
         <a href="#drop">Shop</a>
         <a href="#drop">Colecciones</a>
       </nav>
-      <a class="cart-link" href="#drop" aria-label="Carrito">Cart 0</a>
+      <a class="cart-link" href="#drop" aria-label="Comprar productos">Comprar</a>
     </header>
 
     <main id="top">
@@ -88,6 +88,7 @@
             <div class="product-info">
               <h3>Trunks</h3>
               <p>Futuro frio, acero limpio y energia contenida.</p>
+              <button class="product-buy" data-checkout-open data-product="Trunks" type="button">Comprar</button>
             </div>
           </article>
 
@@ -102,6 +103,7 @@
             <div class="product-info">
               <h3>Gohan</h3>
               <p>Poder dormido elevado con calma y precision.</p>
+              <button class="product-buy" data-checkout-open data-product="Gohan" type="button">Comprar</button>
             </div>
           </article>
 
@@ -116,6 +118,7 @@
             <div class="product-info">
               <h3>Broly</h3>
               <p>Furia salvaje reducida a una silueta brutal.</p>
+              <button class="product-buy" data-checkout-open data-product="Broly" type="button">Comprar</button>
             </div>
           </article>
 
@@ -123,6 +126,65 @@
         </div>
       </section>
     </main>
+
+    <div class="checkout-modal" data-checkout-modal aria-hidden="true">
+      <div class="checkout-panel" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+        <button class="checkout-close" data-checkout-close type="button">Cerrar</button>
+        <p class="kicker">Pago por Yape</p>
+        <h2 id="checkout-title">Finalizar pedido</h2>
+        <form class="checkout-form" data-checkout-form>
+          <label class="checkout-field">
+            <span>Producto</span>
+            <input data-checkout-product name="product" type="text" readonly />
+          </label>
+
+          <fieldset class="checkout-field">
+            <legend>Talla</legend>
+            <div class="size-options">
+              <label class="size-option">
+                <input name="size" type="radio" value="S" required />
+                <span>S</span>
+              </label>
+              <label class="size-option">
+                <input name="size" type="radio" value="M" />
+                <span>M</span>
+              </label>
+              <label class="size-option">
+                <input name="size" type="radio" value="L" />
+                <span>L</span>
+              </label>
+              <label class="size-option">
+                <input name="size" type="radio" value="XL" />
+                <span>XL</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="checkout-field">
+            <span>Lugar de entrega</span>
+            <select name="delivery" data-checkout-delivery required>
+              <option value="">Elegir entrega</option>
+              <option value="Recojo coordinado">Recojo coordinado</option>
+              <option value="Delivery Lima Metropolitana">Delivery Lima Metropolitana</option>
+              <option value="Envio a provincia">Envio a provincia</option>
+            </select>
+          </label>
+
+          <label class="checkout-field">
+            <span>Direccion o referencia</span>
+            <textarea name="address" data-checkout-address rows="3" placeholder="Distrito, direccion o punto de entrega" required></textarea>
+          </label>
+
+          <label class="checkout-field">
+            <span>Metodo de pago</span>
+            <input name="payment" type="text" value="Yape" readonly />
+          </label>
+
+          <button class="checkout-submit" type="submit">Enviar por WhatsApp</button>
+          <p class="checkout-note">Se solicitara el QR de Yape al WhatsApp +51 947 178 845.</p>
+        </form>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <span>Black Swords</span>
