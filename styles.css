@@ -145,6 +145,41 @@ img {
   box-shadow: 0 0 0 1px rgba(247,246,242,.14), 0 34px 90px rgba(0,0,0,.42);
 }
 
+.intro-audio-gate {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(70px, 8vw, 110px);
+  z-index: 5;
+  padding: 14px 24px;
+  border: 1px solid rgba(247,246,242,.42);
+  background: rgba(23,23,23,.82);
+  color: var(--warm);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: .9;
+  text-transform: uppercase;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%);
+  transition: opacity .25s ease, border-color .2s ease, background .2s ease;
+}
+
+.intro-audio-gate:hover,
+.intro-audio-gate:focus-visible {
+  border-color: var(--orange);
+  background: rgba(232,111,25,.92);
+  outline: none;
+}
+
+.intro-screen.needs-audio .intro-audio-gate {
+  opacity: 1;
+  visibility: visible;
+}
+
+.intro-screen.needs-audio .intro-video {
+  filter: brightness(.76);
+}
+
 .intro-skip {
   position: absolute;
   z-index: 4;
@@ -880,6 +915,14 @@ img {
     bottom: max(18px, env(safe-area-inset-bottom));
     padding: 11px 18px;
     font-size: 17px;
+  }
+
+  .intro-audio-gate {
+    bottom: max(78px, calc(env(safe-area-inset-bottom) + 74px));
+    width: min(82vw, 320px);
+    padding: 13px 18px;
+    font-size: 20px;
+    text-align: center;
   }
 
   .site-header {

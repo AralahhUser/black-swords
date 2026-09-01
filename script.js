@@ -1,6 +1,7 @@
 const intro = document.querySelector("[data-intro]");
 const introVideo = document.querySelector("[data-intro-video]");
 const introBackdropVideo = document.querySelector("[data-intro-backdrop-video]");
+const introAudio = document.querySelector("[data-intro-audio]");
 const introSkip = document.querySelector("[data-intro-skip]");
 const checkoutModal = document.querySelector("[data-checkout-modal]");
 const checkoutForm = document.querySelector("[data-checkout-form]");
@@ -17,28 +18,52 @@ const closeIntro = () => {
   document.body.classList.remove("intro-active");
 };
 
-const primeMutedAutoplay = (video) => {
+const primeVideo = (video, { withSound = false } = {}) => {
   if (!video) return null;
-  video.muted = true;
-  video.defaultMuted = true;
+  video.muted = !withSound;
+  video.defaultMuted = !withSound;
   video.autoplay = true;
-  video.volume = 0;
-  video.setAttribute("muted", "");
+  video.volume = withSound ? 1 : 0;
+
+  if (withSound) {
+    video.removeAttribute("muted");
+  } else {
+    video.setAttribute("muted", "");
+  }
+
   video.setAttribute("playsinline", "");
   return video.play();
+};
+
+const requestIntroAudio = () => {
+  if (!intro || !introVideo) return;
+  intro.classList.add("needs-audio");
+  introAudio?.focus();
+};
+
+const playIntroWithAudio = () => {
+  if (!introVideo) return null;
+  intro?.classList.remove("needs-audio");
+  try {
+    introVideo.currentTime = 0;
+  } catch {}
+  return primeVideo(introVideo, { withSound: true });
 };
 
 if (intro && introVideo) {
   document.body.classList.add("intro-active");
 
-  const attemptAutoplay = primeMutedAutoplay(introVideo);
-  primeMutedAutoplay(introBackdropVideo)?.catch(() => {});
+  const attemptAutoplay = primeVideo(introVideo, { withSound: true });
+  primeVideo(introBackdropVideo)?.catch(() => {});
 
   if (attemptAutoplay) {
-    attemptAutoplay.catch(closeIntro);
+    attemptAutoplay.catch(requestIntroAudio);
   }
 
   introVideo.addEventListener("ended", closeIntro);
+  introAudio?.addEventListener("click", () => {
+    playIntroWithAudio()?.catch(requestIntroAudio);
+  });
   introSkip?.addEventListener("click", closeIntro);
 }
 
