@@ -68,11 +68,9 @@ if (intro && introVideo) {
   introSkip?.addEventListener("click", closeIntro);
 }
 
-const gohanCarousel = document.querySelector("[data-gohan-carousel]");
-
-if (gohanCarousel) {
-  const slides = [...gohanCarousel.querySelectorAll("[data-gohan-slide]")];
-  const count = gohanCarousel.querySelector("[data-gohan-count]");
+document.querySelectorAll("[data-product-carousel]").forEach((carousel) => {
+  const slides = [...carousel.querySelectorAll("[data-gallery-slide]")];
+  const count = carousel.querySelector("[data-gallery-count]");
   let current = 0;
   let visible = false;
   let hovered = false;
@@ -97,25 +95,25 @@ if (gohanCarousel) {
     timer = window.setInterval(() => showSlide(current + 1), 5000);
   };
 
-  gohanCarousel.querySelector("[data-gohan-prev]")?.addEventListener("click", () => {
+  carousel.querySelector("[data-gallery-prev]")?.addEventListener("click", () => {
     showSlide(current - 1);
     restartTimer();
   });
-  gohanCarousel.querySelector("[data-gohan-next]")?.addEventListener("click", () => {
+  carousel.querySelector("[data-gallery-next]")?.addEventListener("click", () => {
     showSlide(current + 1);
     restartTimer();
   });
 
   if (window.matchMedia("(hover: hover)").matches) {
-    gohanCarousel.addEventListener("mouseenter", () => { hovered = true; restartTimer(); });
-    gohanCarousel.addEventListener("mouseleave", () => { hovered = false; restartTimer(); });
+    carousel.addEventListener("mouseenter", () => { hovered = true; restartTimer(); });
+    carousel.addEventListener("mouseleave", () => { hovered = false; restartTimer(); });
   }
 
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       restartTimer();
-    }, { threshold: .25 }).observe(gohanCarousel);
+    }, { threshold: .25 }).observe(carousel);
   } else {
     visible = true;
     restartTimer();
@@ -123,7 +121,7 @@ if (gohanCarousel) {
 
   document.addEventListener("visibilitychange", restartTimer);
   document.addEventListener("intro:closed", restartTimer);
-}
+});
 
 const openCheckout = (product, trigger) => {
   if (!checkoutModal || !checkoutForm || !checkoutProduct) return;

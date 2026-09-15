@@ -491,16 +491,18 @@ img {
     var(--mist);
 }
 
-.media-gohan {
+[data-product-carousel] {
+  aspect-ratio: 2 / 3;
+  min-height: 0;
   background: var(--mist);
 }
 
-.media-gohan::before,
-.media-gohan::after {
+[data-product-carousel]::before,
+[data-product-carousel]::after {
   display: none;
 }
 
-.gohan-slide {
+.gallery-slide {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -511,11 +513,11 @@ img {
   transition: opacity .65s ease;
 }
 
-.gohan-slide.is-active {
+.gallery-slide.is-active {
   opacity: 1;
 }
 
-.gohan-controls {
+.gallery-controls {
   position: absolute;
   right: 16px;
   bottom: 16px;
@@ -527,8 +529,8 @@ img {
   gap: 8px;
 }
 
-.gohan-arrow,
-.gohan-count {
+.gallery-arrow,
+.gallery-count {
   display: grid;
   width: 46px;
   height: 46px;
@@ -540,18 +542,18 @@ img {
   line-height: 1;
 }
 
-.gohan-arrow {
+.gallery-arrow {
   font-family: Arial, sans-serif;
   font-size: 24px;
 }
 
-.gohan-arrow:hover,
-.gohan-arrow:focus-visible {
+.gallery-arrow:hover,
+.gallery-arrow:focus-visible {
   border-color: var(--orange);
   background: var(--paper);
 }
 
-.gohan-count {
+.gallery-count {
   width: 58px;
   font-size: 18px;
   font-weight: 700;
@@ -579,7 +581,7 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gohan-slide {
+  .gallery-slide {
     transition: none;
   }
 }
@@ -1205,4 +1207,45 @@ img {
   .section-heading h2 {
     font-size: 45px;
   }
+}
+
+/* Preserve photography proportions and separate the mobile cover from its copy. */
+.hero-center { position: relative; z-index: 1; }
+@media (min-width: 621px) and (max-width: 980px) {
+  .dbz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .main-nav { gap: 12px; overflow: visible; }
+  .main-nav a, .cart-link, .social-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .hero-section { display: flex; flex-direction: column; min-height: 0; }
+  .hero-bg {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    opacity: 1;
+    background:
+      linear-gradient(180deg, transparent 68%, var(--warm) 100%),
+      url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
+  }
+  .hero-center { padding: 12px 24px 8px; }
+  .hero-title { max-width: 440px; font-size: 32px; line-height: 1.05; }
+  .hero-subtitle { max-width: 400px; font-size: 21px; line-height: 1.15; }
+  .hero-footer { position: static; padding: 8px 24px 20px; gap: 0; }
+  .drop-section { padding-top: 36px; }
+  .section-heading h2 { font-size: 44px; line-height: 1; }
+  .group-heading { flex-direction: row; align-items: center; }
+  .dbz-grid { gap: 32px; }
+  [data-product-carousel] { min-height: 0; aspect-ratio: 2 / 3; }
+  .product-info { padding: 20px; }
+  .checkout-close { min-height: 44px; min-width: 64px; }
+  .checkout-panel { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+}
+@media (max-width: 380px) {
+  .hero-title { font-size: 29px; }
+  .section-heading h2 { font-size: 40px; }
 }
