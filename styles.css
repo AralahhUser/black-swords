@@ -319,6 +319,28 @@ img {
   line-height: .92;
 }
 
+/* Small breaks in the ink soften the lettering without blurring its shape. */
+.hero-title,
+.hero-subtitle {
+  --ink: #292824;
+  filter: blur(.24px);
+}
+
+.hero-subtitle { --ink: #64625e; }
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .hero-title,
+  .hero-subtitle {
+    background:
+      radial-gradient(ellipse at 20% 35%, rgba(247,246,242,.78) 0 .65px, transparent 1px) 0 0 / 7px 11px,
+      radial-gradient(ellipse at 70% 65%, rgba(247,246,242,.6) 0 .8px, transparent 1.2px) 3px 2px / 13px 17px,
+      linear-gradient(var(--ink), var(--ink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
 .hero-footer {
   position: absolute;
   right: clamp(18px, 4vw, 54px);
