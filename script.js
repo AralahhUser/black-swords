@@ -16,6 +16,7 @@ const closeIntro = () => {
   introBackdropVideo?.pause();
   intro.classList.add("is-hidden");
   document.body.classList.remove("intro-active");
+  document.dispatchEvent(new Event("intro:closed"));
 };
 
 const primeVideo = (video, { withSound = false } = {}) => {
@@ -65,6 +66,63 @@ if (intro && introVideo) {
     playIntroWithAudio()?.catch(requestIntroAudio);
   });
   introSkip?.addEventListener("click", closeIntro);
+}
+
+const gohanCarousel = document.querySelector("[data-gohan-carousel]");
+
+if (gohanCarousel) {
+  const slides = [...gohanCarousel.querySelectorAll("[data-gohan-slide]")];
+  const count = gohanCarousel.querySelector("[data-gohan-count]");
+  let current = 0;
+  let visible = false;
+  let hovered = false;
+  let timer = null;
+
+  const showSlide = (next) => {
+    current = (next + slides.length) % slides.length;
+    slides.forEach((slide, index) => {
+      const active = index === current;
+      slide.classList.toggle("is-active", active);
+      slide.setAttribute("aria-hidden", String(!active));
+    });
+    count.textContent = `${current + 1} / ${slides.length}`;
+    count.setAttribute("aria-label", `Image ${current + 1} of ${slides.length}`);
+  };
+
+  const restartTimer = () => {
+    clearInterval(timer);
+    timer = null;
+    if (!visible || hovered || document.hidden || document.body.classList.contains("intro-active") ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    timer = window.setInterval(() => showSlide(current + 1), 5000);
+  };
+
+  gohanCarousel.querySelector("[data-gohan-prev]")?.addEventListener("click", () => {
+    showSlide(current - 1);
+    restartTimer();
+  });
+  gohanCarousel.querySelector("[data-gohan-next]")?.addEventListener("click", () => {
+    showSlide(current + 1);
+    restartTimer();
+  });
+
+  if (window.matchMedia("(hover: hover)").matches) {
+    gohanCarousel.addEventListener("mouseenter", () => { hovered = true; restartTimer(); });
+    gohanCarousel.addEventListener("mouseleave", () => { hovered = false; restartTimer(); });
+  }
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      restartTimer();
+    }, { threshold: .25 }).observe(gohanCarousel);
+  } else {
+    visible = true;
+    restartTimer();
+  }
+
+  document.addEventListener("visibilitychange", restartTimer);
+  document.addEventListener("intro:closed", restartTimer);
 }
 
 const openCheckout = (product, trigger) => {

@@ -20,12 +20,14 @@
     <div class="intro-screen" data-intro>
       <div class="intro-backdrop" aria-hidden="true"></div>
       <video class="intro-video-backdrop" data-intro-backdrop-video autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="./assets/black-swords-intro-dbxzcalitos-last10.mp4" type="video/mp4" />
+        <source src="./assets/black-swords-intro-full-mobile.mp4" type="video/mp4" media="(max-width: 620px)" />
+        <source src="./assets/black-swords-intro-full.mp4" type="video/mp4" />
       </video>
       <span class="intro-side-label intro-side-label-left" aria-hidden="true">Black Sword x DBZ</span>
       <span class="intro-side-label intro-side-label-right" aria-hidden="true">Black Sword x DBZ</span>
       <video class="intro-video" data-intro-video autoplay playsinline preload="auto">
-        <source src="./assets/black-swords-intro-dbxzcalitos-last10.mp4" type="video/mp4" />
+        <source src="./assets/black-swords-intro-full-mobile.mp4" type="video/mp4" media="(max-width: 620px)" />
+        <source src="./assets/black-swords-intro-full.mp4" type="video/mp4" />
       </video>
       <button class="intro-audio-gate" data-intro-audio type="button">Enter with sound</button>
       <button class="intro-skip" data-intro-skip type="button">Skip</button>
@@ -87,8 +89,15 @@
             class="product-card"
             data-title="Future Gohan"
           >
-            <div class="product-media media-gohan" data-code="02">
+            <div class="product-media media-gohan" data-gohan-carousel aria-label="Future Gohan front and back views">
+              <img class="gohan-slide is-active" data-gohan-slide src="./assets/future-gohan-front.jpeg" alt="Future Gohan T-shirt, front view" width="1024" height="1536" loading="lazy" draggable="false" />
+              <img class="gohan-slide" data-gohan-slide src="./assets/future-gohan-back.jpeg" alt="Future Gohan T-shirt, back view" width="1024" height="1536" loading="lazy" draggable="false" aria-hidden="true" />
               <span>DBZ</span>
+              <div class="gohan-controls">
+                <button class="gohan-arrow" data-gohan-prev type="button" aria-label="Previous Gohan view" title="Previous Gohan view">&#8592;</button>
+                <output class="gohan-count" data-gohan-count aria-label="Image 1 of 2">1 / 2</output>
+                <button class="gohan-arrow" data-gohan-next type="button" aria-label="Next Gohan view" title="Next Gohan view">&#8594;</button>
+              </div>
             </div>
             <div class="product-info">
               <h3>Future Gohan</h3>
