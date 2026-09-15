@@ -204,8 +204,8 @@ img {
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 24px;
-  min-height: 72px;
-  padding: 14px clamp(18px, 4vw, 54px);
+  min-height: 92px;
+  padding: 8px clamp(18px, 4vw, 54px);
   border-bottom: 1px solid var(--line);
   background: rgba(247, 246, 242, .92);
   backdrop-filter: blur(14px);
@@ -220,36 +220,19 @@ img {
 
 .brand {
   justify-self: center;
-  gap: 10px;
-  font-family: var(--wordmark);
-  font-style: normal;
-  font-weight: 400;
-  text-transform: uppercase;
 }
 
 .brand-mark {
   display: block;
   flex: 0 0 auto;
-  width: 58px;
-  height: 30px;
+  width: 168px;
+  aspect-ratio: 859 / 409;
 }
 
 .brand-mark img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.brand-name {
-  color: var(--coal);
-  font-family: var(--wordmark);
-  font-size: clamp(28px, 2.55vw, 40px);
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: .9;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .main-nav {
@@ -282,7 +265,7 @@ img {
 .hero-section {
   position: relative;
   display: grid;
-  min-height: calc(100svh - 72px);
+  min-height: calc(100svh - 92px);
   grid-template-columns: minmax(320px, .9fr) minmax(360px, 1.1fr);
   align-items: stretch;
   overflow: hidden;
@@ -303,28 +286,6 @@ img {
 .hero-bg::before,
 .hero-bg::after {
   display: none;
-}
-
-.hero-logo-card {
-  position: absolute;
-  right: clamp(26px, 6vw, 96px);
-  top: clamp(86px, 13vh, 148px);
-  z-index: 2;
-  display: grid;
-  width: min(38vw, 460px);
-  aspect-ratio: 2.1;
-  place-items: center;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.hero-logo-card img {
-  width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 16px 24px rgba(247,246,242,.45));
 }
 
 .hero-center {
@@ -415,11 +376,11 @@ img {
 }
 
 .section-heading h2 {
-  max-width: 820px;
+  max-width: 1000px;
   margin: 0;
   color: var(--coal);
   font-family: var(--display);
-  font-size: 78px;
+  font-size: 96px;
   font-weight: 700;
   line-height: .8;
 }
@@ -842,13 +803,6 @@ img {
     opacity: .62;
   }
 
-  .hero-logo-card {
-    right: 50%;
-    top: 86px;
-    width: min(74vw, 380px);
-    transform: translateX(50%);
-  }
-
   .hero-center {
     grid-column: 1;
     grid-row: 1;
@@ -928,8 +882,8 @@ img {
   .site-header {
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: 10px;
-    min-height: 58px;
-    padding: 10px 12px;
+    min-height: 66px;
+    padding: 8px 12px;
   }
 
   .brand {
@@ -937,17 +891,8 @@ img {
     min-width: 0;
   }
 
-  .brand-name {
-    display: block;
-    overflow: visible;
-    font-size: clamp(22px, 5.4vw, 27px);
-    line-height: .9;
-    white-space: nowrap;
-  }
-
   .brand-mark {
-    width: 42px;
-    height: 22px;
+    width: 104px;
   }
 
   .main-nav {
@@ -966,7 +911,7 @@ img {
   }
 
   .hero-section {
-    min-height: calc(100svh - 56px);
+    min-height: calc(100svh - 66px);
   }
 
   .hero-bg {
@@ -976,14 +921,6 @@ img {
       linear-gradient(180deg, rgba(247,246,242,.16) 0%, rgba(247,246,242,.08) 44%, rgba(247,246,242,.5) 100%),
       url("./assets/black-swords-cover.jpeg") 61% top / cover no-repeat;
     opacity: .72;
-  }
-
-  .hero-logo-card {
-    top: 72px;
-    right: 14px;
-    width: min(48vw, 200px);
-    opacity: .92;
-    transform: none;
   }
 
   .hero-center {
@@ -1025,7 +962,7 @@ img {
 
   .drop-section {
     padding: 48px 18px 68px;
-    scroll-margin-top: 66px;
+    scroll-margin-top: 74px;
   }
 
   .section-heading {
@@ -1038,7 +975,7 @@ img {
   }
 
   .section-heading h2 {
-    font-size: 39px;
+    font-size: 56px;
     line-height: .88;
   }
 
@@ -1174,7 +1111,7 @@ img {
       "nav buy";
     grid-template-columns: 1fr auto;
     gap: 8px 12px;
-    min-height: 82px;
+    min-height: 100px;
     padding: 8px 12px 10px;
   }
 
@@ -1195,11 +1132,11 @@ img {
   }
 
   .hero-section {
-    min-height: calc(100svh - 82px);
+    min-height: calc(100svh - 100px);
   }
 
-  .brand-name {
-    font-size: 27px;
+  .brand-mark {
+    width: 118px;
   }
 
   .hero-center {
@@ -1215,6 +1152,6 @@ img {
   }
 
   .section-heading h2 {
-    font-size: 36px;
+    font-size: 50px;
   }
 }
