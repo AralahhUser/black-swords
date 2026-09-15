@@ -128,13 +128,13 @@ checkoutForm?.addEventListener("submit", (event) => {
   }
 
   const message = [
-    "Hola Black Swords, quiero realizar este pedido:",
-    `Producto: ${product}`,
-    `Talla: ${size}`,
-    `Lugar de entrega: ${delivery}`,
-    `Direccion o referencia: ${address}`,
-    "Metodo de pago: Yape",
-    "Por favor enviame el codigo QR para realizar el pago."
+    "Hello Black Swords, I would like to place this order:",
+    `Product: ${product}`,
+    `Size: ${size}`,
+    `Delivery option: ${delivery}`,
+    `Address or reference: ${address}`,
+    "Payment method: Yape",
+    "Please send me the QR code to complete the payment."
   ].join("\n");
 
   window.location.href = `https://wa.me/${paymentWhatsappNumber}?text=${encodeURIComponent(message)}`;

@@ -380,7 +380,7 @@ img {
   margin: 0;
   color: var(--coal);
   font-family: var(--display);
-  font-size: 96px;
+  font-size: 86px;
   font-weight: 700;
   line-height: .8;
 }
@@ -562,15 +562,6 @@ img {
   max-width: 480px;
   font-size: 74px;
   line-height: .92;
-}
-
-.product-info p {
-  max-width: 430px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.05;
 }
 
 .product-buy {
@@ -975,7 +966,7 @@ img {
   }
 
   .section-heading h2 {
-    font-size: 56px;
+    font-size: 50px;
     line-height: .88;
   }
 
@@ -1007,11 +998,6 @@ img {
   .product-info h3 {
     font-size: 32px;
     line-height: .96;
-  }
-
-  .product-info p {
-    font-size: 20px;
-    line-height: 1.12;
   }
 
   .product-buy {
@@ -1152,6 +1138,6 @@ img {
   }
 
   .section-heading h2 {
-    font-size: 50px;
+    font-size: 45px;
   }
 }
