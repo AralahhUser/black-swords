@@ -40,7 +40,7 @@
       <a class="brand" href="#top" aria-label="Back to Black Swords home">
         <span class="brand-mark"><img src="./assets/black-swords-logo-transparent.png" alt="" width="859" height="409" /></span>
       </a>
-      <a class="cart-link" href="#drop" aria-label="Shop the collection">Buy</a>
+      <a class="cart-link" href="#drop" lang="es" aria-label="Comprar productos">Comprar</a>
     </header>
 
     <main id="top">
@@ -79,7 +79,7 @@
             </div>
             <div class="product-info">
               <h3>Future Trunkz</h3>
-              <button class="product-buy" data-checkout-open data-product="Future Trunkz" type="button">Buy</button>
+              <button class="product-buy" data-checkout-open data-product="Future Trunkz" lang="es" type="button">Comprar</button>
             </div>
           </article>
 
@@ -92,7 +92,7 @@
             </div>
             <div class="product-info">
               <h3>Future Gohan</h3>
-              <button class="product-buy" data-checkout-open data-product="Future Gohan" type="button">Buy</button>
+              <button class="product-buy" data-checkout-open data-product="Future Gohan" lang="es" type="button">Comprar</button>
             </div>
           </article>
 
@@ -105,7 +105,7 @@
             </div>
             <div class="product-info">
               <h3>Super Broly</h3>
-              <button class="product-buy" data-checkout-open data-product="Super Broly" type="button">Buy</button>
+              <button class="product-buy" data-checkout-open data-product="Super Broly" lang="es" type="button">Comprar</button>
             </div>
           </article>
 
@@ -114,19 +114,19 @@
       </section>
     </main>
 
-    <div class="checkout-modal" data-checkout-modal aria-hidden="true">
+    <div class="checkout-modal" data-checkout-modal lang="es" aria-hidden="true">
       <div class="checkout-panel" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
-        <button class="checkout-close" data-checkout-close type="button">Close</button>
-        <p class="kicker">Pay with Yape</p>
-        <h2 id="checkout-title">Complete your order</h2>
+        <button class="checkout-close" data-checkout-close type="button">Cerrar</button>
+        <p class="kicker">Pago con Yape</p>
+        <h2 id="checkout-title">Finalizar pedido</h2>
         <form class="checkout-form" data-checkout-form>
           <label class="checkout-field">
-            <span>Product</span>
+            <span>Producto</span>
             <input data-checkout-product name="product" type="text" readonly />
           </label>
 
           <fieldset class="checkout-field">
-            <legend>Size</legend>
+            <legend>Talla</legend>
             <div class="size-options">
               <label class="size-option">
                 <input name="size" type="radio" value="S" required />
@@ -148,27 +148,27 @@
           </fieldset>
 
           <label class="checkout-field">
-            <span>Delivery option</span>
+            <span>Lugar de entrega</span>
             <select name="delivery" data-checkout-delivery required>
-              <option value="">Choose delivery</option>
-              <option value="Arranged pickup">Arranged pickup</option>
-              <option value="Delivery in Metropolitan Lima">Delivery in Metropolitan Lima</option>
-              <option value="Shipping outside Lima">Shipping outside Lima</option>
+              <option value="">Elegir entrega</option>
+              <option value="Recojo coordinado">Recojo coordinado</option>
+              <option value="Entrega en Lima Metropolitana">Entrega en Lima Metropolitana</option>
+              <option value="Envío a provincias">Envío a provincias</option>
             </select>
           </label>
 
           <label class="checkout-field">
-            <span>Address or reference</span>
-            <textarea name="address" data-checkout-address rows="3" placeholder="District, address or pickup point" required></textarea>
+            <span>Dirección o referencia</span>
+            <textarea name="address" data-checkout-address rows="3" placeholder="Distrito, dirección o punto de entrega" required></textarea>
           </label>
 
           <label class="checkout-field">
-            <span>Payment method</span>
+            <span>Método de pago</span>
             <input name="payment" type="text" value="Yape" readonly />
           </label>
 
-          <button class="checkout-submit" type="submit">Send via WhatsApp</button>
-          <p class="checkout-note">Request your Yape QR code on WhatsApp at +51 947 178 845.</p>
+          <button class="checkout-submit" type="submit">Enviar por WhatsApp</button>
+          <p class="checkout-note">Solicita el código QR de Yape por WhatsApp al +51 947 178 845.</p>
         </form>
       </div>
     </div>
