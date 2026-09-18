@@ -39,6 +39,7 @@ const primeVideo = (video, { withSound = false } = {}) => {
 const requestIntroAudio = () => {
   if (!intro || !introVideo) return;
   intro.classList.add("needs-audio");
+  introBackdropVideo?.pause();
   introAudio?.focus();
 };
 
@@ -47,7 +48,9 @@ const playIntroWithAudio = () => {
   intro?.classList.remove("needs-audio");
   try {
     introVideo.currentTime = 0;
+    if (introBackdropVideo) introBackdropVideo.currentTime = 0;
   } catch {}
+  primeVideo(introBackdropVideo)?.catch(() => {});
   return primeVideo(introVideo, { withSound: true });
 };
 
@@ -62,6 +65,13 @@ if (intro && introVideo) {
   }
 
   introVideo.addEventListener("ended", closeIntro);
+  // Keep the blurred edges on the same scene as the foreground video.
+  introVideo.addEventListener("timeupdate", () => {
+    if (introBackdropVideo?.readyState >= 2 &&
+        Math.abs(introBackdropVideo.currentTime - introVideo.currentTime) > .3) {
+      introBackdropVideo.currentTime = introVideo.currentTime;
+    }
+  });
   introAudio?.addEventListener("click", () => {
     playIntroWithAudio()?.catch(requestIntroAudio);
   });
