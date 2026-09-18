@@ -319,7 +319,6 @@ img {
   line-height: .92;
 }
 
-/* Small breaks in the ink soften the lettering without blurring its shape. */
 .hero-footer {
   position: absolute;
   right: clamp(18px, 4vw, 54px);
@@ -1307,4 +1306,62 @@ img {
 @media (max-width: 380px) {
   .hero-title { font-size: 29px; }
   .section-heading h2 { font-size: 40px; }
+}
+
+/* Keep the release title in the sky above the character at every breakpoint. */
+.hero-section {
+  display: block;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  opacity: 1;
+  background:
+    linear-gradient(180deg, rgba(12,30,38,.2), transparent 24% 78%, rgba(12,30,38,.48)),
+    url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
+}
+
+.cover-heading {
+  position: absolute;
+  top: 5%;
+  left: 20px;
+  right: 20px;
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 2px 12px rgba(12,30,38,.36);
+}
+
+.hero-footer {
+  position: absolute;
+  padding: 0;
+  color: var(--paper);
+  text-shadow: 0 1px 5px rgba(0,0,0,.6);
+}
+
+@media (max-width: 980px) {
+  .cover-heading { font-size: 52px; }
+}
+
+@media (max-width: 620px) {
+  .hero-section { aspect-ratio: 4 / 3; }
+  .cover-heading { top: 6%; font-size: 36px; }
+  .hero-footer { bottom: 4px; }
+  .social-links { gap: 20px; }
+}
+
+@media (max-width: 380px) {
+  .cover-heading { font-size: 30px; }
 }
