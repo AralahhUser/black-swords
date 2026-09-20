@@ -93,7 +93,7 @@ img {
   z-index: 0;
   background:
     linear-gradient(rgba(23,23,23,.5), rgba(23,23,23,.62)),
-    url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
+    url("./assets/black-swords-cover-20260919.png") center / cover no-repeat;
   filter: blur(18px);
   transform: scale(1.08);
 }
@@ -266,7 +266,7 @@ img {
   background:
     linear-gradient(90deg, rgba(247,246,242,1) 0%, rgba(247,246,242,.94) 12%, rgba(247,246,242,.62) 28%, rgba(247,246,242,.16) 48%, rgba(247,246,242,0) 66%),
     linear-gradient(180deg, rgba(247,246,242,.08), rgba(247,246,242,.18)),
-    url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
+    url("./assets/black-swords-cover-20260919.png") center / cover no-repeat;
 }
 
 .hero-bg::before,
@@ -887,7 +887,7 @@ img {
     min-height: 54svh;
     background:
       linear-gradient(180deg, rgba(247,246,242,.1) 0%, rgba(247,246,242,.22) 58%, rgba(247,246,242,.34) 100%),
-      url("./assets/black-swords-cover.jpeg") center top / cover no-repeat;
+      url("./assets/black-swords-cover-20260919.png") center top / cover no-repeat;
     opacity: .62;
   }
 
@@ -989,7 +989,7 @@ img {
     background:
       linear-gradient(90deg, rgba(247,246,242,.98) 0%, rgba(247,246,242,.9) 34%, rgba(247,246,242,.45) 64%, rgba(247,246,242,.14) 100%),
       linear-gradient(180deg, rgba(247,246,242,.16) 0%, rgba(247,246,242,.08) 44%, rgba(247,246,242,.5) 100%),
-      url("./assets/black-swords-cover.jpeg") 61% top / cover no-repeat;
+      url("./assets/black-swords-cover-20260919.png") 61% top / cover no-repeat;
     opacity: .72;
   }
 
@@ -1256,7 +1256,7 @@ img {
     opacity: 1;
     background:
       linear-gradient(180deg, transparent 68%, var(--warm) 100%),
-      url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
+      url("./assets/black-swords-cover-20260919.png") center / cover no-repeat;
   }
   .hero-center { padding: 12px 24px 8px; }
   .hero-title { max-width: 440px; font-size: 32px; line-height: 1.05; }
@@ -1294,7 +1294,7 @@ img {
   opacity: 1;
   background:
     linear-gradient(180deg, rgba(12,30,38,.2), transparent 24% 78%, rgba(12,30,38,.48)),
-    url("./assets/black-swords-cover.jpeg") center / cover no-repeat;
+    url("./assets/black-swords-cover-20260919.png") center / cover no-repeat;
 }
 
 .cover-heading {
