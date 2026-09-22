@@ -6,9 +6,32 @@ const introSkip = document.querySelector("[data-intro-skip]");
 const checkoutModal = document.querySelector("[data-checkout-modal]");
 const checkoutForm = document.querySelector("[data-checkout-form]");
 const checkoutProduct = document.querySelector("[data-checkout-product]");
+const checkoutPrice = document.querySelector("[data-checkout-price]");
+const discountCodeInput = document.querySelector("[data-discount-code]");
+const discountStatus = document.querySelector("[data-discount-status]");
 const checkoutClose = document.querySelector("[data-checkout-close]");
 const paymentWhatsappNumber = "51947178845";
 let checkoutTrigger = null;
+const regularPrice = 119.90;
+const discountedPrice = 99.00;
+const discountCodes = new Set(["calitos", "pollitoaaron", "alesso69", "italo"]);
+
+const updateCheckoutPrice = () => {
+  const code = discountCodeInput?.value.trim().toLowerCase() || "";
+  const applied = discountCodes.has(code);
+  const price = applied ? discountedPrice : regularPrice;
+  if (checkoutPrice) checkoutPrice.value = "S/ " + price.toFixed(2);
+  if (discountStatus) {
+    discountStatus.textContent = code && !applied
+      ? "Código no válido"
+      : applied
+        ? "Descuento aplicado: S/ 99.00"
+        : "";
+    discountStatus.classList.toggle("is-valid", applied);
+    discountStatus.classList.toggle("is-invalid", Boolean(code) && !applied);
+  }
+  return { code, applied, price };
+};
 
 const closeIntro = () => {
   if (!intro) return;
@@ -138,6 +161,7 @@ const openCheckout = (product, trigger) => {
   checkoutTrigger = trigger || null;
   checkoutForm.reset();
   checkoutProduct.value = product;
+  updateCheckoutPrice();
   checkoutModal.classList.add("is-open");
   checkoutModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("checkout-active");
@@ -168,6 +192,7 @@ document.querySelectorAll(".product-card").forEach((card) => {
 });
 
 checkoutClose?.addEventListener("click", closeCheckout);
+discountCodeInput?.addEventListener("input", updateCheckoutPrice);
 
 checkoutModal?.addEventListener("click", (event) => {
   if (event.target === checkoutModal) closeCheckout();
@@ -187,6 +212,7 @@ checkoutForm?.addEventListener("submit", (event) => {
   const size = String(formData.get("size") || "").trim();
   const delivery = String(formData.get("delivery") || "").trim();
   const address = String(formData.get("address") || "").replace(/\s+/g, " ").trim();
+  const { code, applied, price } = updateCheckoutPrice();
 
   if (!product || !size || !delivery || !address) {
     checkoutForm.reportValidity();
@@ -199,6 +225,8 @@ checkoutForm?.addEventListener("submit", (event) => {
     `Talla: ${size}`,
     `Lugar de entrega: ${delivery}`,
     `Dirección o referencia: ${address}`,
+    "Precio: S/ " + price.toFixed(2),
+    "Descuento: " + (applied ? code : "No aplicado"),
     "Método de pago: Yape",
     "Por favor, envíenme el código QR de Yape para completar el pago."
   ].join("\n");

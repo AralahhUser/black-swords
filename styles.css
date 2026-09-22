@@ -611,6 +611,15 @@ img {
   line-height: 1;
 }
 
+.product-price {
+  margin: 0;
+  color: var(--orange);
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: .9;
+}
+
 .limited-product .product-info h3 {
   max-width: 480px;
   font-size: 74px;
@@ -746,6 +755,17 @@ img {
   border-color: var(--orange);
   box-shadow: 0 0 0 3px rgba(232,111,25,.13);
 }
+
+.discount-status {
+  min-height: 18px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.discount-status.is-valid { color: #34713d; }
+.discount-status.is-invalid { color: #a32626; }
 
 .size-options {
   display: grid;
