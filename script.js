@@ -12,6 +12,7 @@ const discountStatus = document.querySelector("[data-discount-status]");
 const checkoutClose = document.querySelector("[data-checkout-close]");
 const paymentWhatsappNumber = "51947178845";
 let checkoutTrigger = null;
+let introClosing = false;
 const regularPrice = 119.90;
 const discountedPrice = 99.00;
 const discountCodes = new Set(["calitos", "pollitoaaron", "alesso69", "italo"]);
@@ -34,12 +35,16 @@ const updateCheckoutPrice = () => {
 };
 
 const closeIntro = () => {
-  if (!intro) return;
-  introVideo?.pause();
-  introBackdropVideo?.pause();
-  intro.classList.add("is-hidden");
-  document.body.classList.remove("intro-active");
-  document.dispatchEvent(new Event("intro:closed"));
+  if (!intro || introClosing || intro.classList.contains("is-hidden")) return;
+  introClosing = true;
+  intro.classList.add("is-closing");
+  window.setTimeout(() => {
+    introVideo?.pause();
+    introBackdropVideo?.pause();
+    intro.classList.add("is-hidden");
+    document.body.classList.remove("intro-active");
+    document.dispatchEvent(new Event("intro:closed"));
+  }, 700);
 };
 
 const primeVideo = (video, { withSound = false } = {}) => {
