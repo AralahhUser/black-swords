@@ -64,7 +64,7 @@
             <span>3 pieces</span>
           </div>
           <div class="product-grid dbz-grid">
-            <article class="product-card" data-title="Trunkz Pump Cover">
+            <article class="product-card" data-product-card data-product-id="trunkz" data-title="Trunkz Pump Cover">
               <div class="product-media" data-product-carousel aria-label="Trunkz Pump Cover front and back views">
                 <img class="gallery-slide is-active" data-gallery-slide src="./assets/future-trunkz-front.jpeg" alt="Trunkz Pump Cover, front view" width="1024" height="1536" loading="lazy" draggable="false" />
                 <img class="gallery-slide" data-gallery-slide src="./assets/future-trunkz-back.jpeg" alt="Trunkz Pump Cover, back view" width="1024" height="1536" loading="lazy" draggable="false" aria-hidden="true" />
@@ -78,10 +78,11 @@
               <div class="product-info">
                 <h3>Trunkz Pump Cover</h3>
                 <p class="product-price">S/ 129.00</p>
+                <p class="product-stock" data-product-stock></p>
                 <button class="product-buy" data-checkout-open data-product="Trunkz Pump Cover" lang="es" type="button">Comprar</button>
               </div>
             </article>
-            <article class="product-card" data-title="Gohan Pump Cover">
+            <article class="product-card" data-product-card data-product-id="gohan" data-title="Gohan Pump Cover">
               <div class="product-media" data-product-carousel aria-label="Gohan Pump Cover front and back views">
                 <img class="gallery-slide is-active" data-gallery-slide src="./assets/future-gohan-front.jpeg" alt="Gohan Pump Cover, front view" width="1024" height="1536" loading="lazy" draggable="false" />
                 <img class="gallery-slide" data-gallery-slide src="./assets/future-gohan-back.jpeg" alt="Gohan Pump Cover, back view" width="1024" height="1536" loading="lazy" draggable="false" aria-hidden="true" />
@@ -95,10 +96,11 @@
               <div class="product-info">
                 <h3>Gohan Pump Cover</h3>
                 <p class="product-price">S/ 129.00</p>
+                <p class="product-stock" data-product-stock></p>
                 <button class="product-buy" data-checkout-open data-product="Gohan Pump Cover" lang="es" type="button">Comprar</button>
               </div>
             </article>
-            <article class="product-card" data-title="Super Broly Pump Cover">
+            <article class="product-card" data-product-card data-product-id="broly" data-title="Super Broly Pump Cover">
               <div class="product-media" data-product-carousel aria-label="Super Broly Pump Cover front and back views">
                 <img class="gallery-slide is-active" data-gallery-slide src="./assets/super-broly-front.jpeg" alt="Super Broly Pump Cover, front view" width="1024" height="1536" loading="lazy" draggable="false" />
                 <img class="gallery-slide" data-gallery-slide src="./assets/super-broly-back.jpeg" alt="Super Broly Pump Cover, back view" width="1024" height="1536" loading="lazy" draggable="false" aria-hidden="true" />
@@ -112,6 +114,7 @@
               <div class="product-info">
                 <h3>Super Broly Pump Cover</h3>
                 <p class="product-price">S/ 129.00</p>
+                <p class="product-stock" data-product-stock></p>
                 <button class="product-buy" data-checkout-open data-product="Super Broly Pump Cover" lang="es" type="button">Comprar</button>
               </div>
             </article>
@@ -190,7 +193,100 @@
     <footer class="site-footer">
       <span>Black Swords</span>
       <span>© 2026</span>
+      <a class="admin-link" href="#admin" data-admin-open>Admin</a>
     </footer>
+
+    <div class="admin-modal" data-admin-modal lang="es" aria-hidden="true">
+      <div class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+        <button class="admin-close" data-admin-close type="button">Cerrar</button>
+        <div class="admin-auth-view" data-admin-auth-view>
+          <p class="kicker">Control panel</p>
+          <h2 id="admin-title">Administrador</h2>
+          <p class="admin-auth-copy" data-admin-auth-copy>Configura el acceso para administrar la tienda.</p>
+          <form class="admin-auth-form" data-admin-auth-form>
+            <label class="admin-field">
+              <span>ID</span>
+              <input data-admin-id name="admin-id" type="text" autocomplete="username" required />
+            </label>
+            <label class="admin-field">
+              <span>Contraseña</span>
+              <input data-admin-password name="admin-password" type="password" autocomplete="current-password" required />
+            </label>
+            <label class="admin-field admin-confirm-field" data-admin-confirm-field>
+              <span>Confirmar contraseña</span>
+              <input data-admin-confirm name="admin-confirm" type="password" autocomplete="new-password" />
+            </label>
+            <button class="admin-submit" data-admin-auth-submit type="submit">Crear acceso</button>
+            <p class="admin-status" data-admin-auth-status aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="admin-dashboard" data-admin-dashboard hidden>
+          <div class="admin-heading">
+            <div>
+              <p class="kicker">Control panel</p>
+              <h2>Configuración</h2>
+            </div>
+            <button class="admin-logout" data-admin-logout type="button">Cerrar sesión</button>
+          </div>
+          <form class="admin-form" data-admin-form>
+            <section class="admin-section" aria-labelledby="admin-products-title">
+              <div class="admin-section-heading">
+                <div>
+                  <p class="kicker">Catálogo</p>
+                  <h3 id="admin-products-title">Productos</h3>
+                </div>
+                <span>Nombre · precio · stock</span>
+              </div>
+              <div class="admin-product-list" data-admin-product-list></div>
+            </section>
+
+            <section class="admin-section" aria-labelledby="admin-discounts-title">
+              <div class="admin-section-heading">
+                <div>
+                  <p class="kicker">Promociones</p>
+                  <h3 id="admin-discounts-title">Códigos de descuento</h3>
+                </div>
+                <button class="admin-small-button" data-admin-add-discount type="button">Añadir código</button>
+              </div>
+              <div class="admin-discount-list" data-admin-discount-list></div>
+            </section>
+
+            <section class="admin-section" aria-labelledby="admin-page-title">
+              <div class="admin-section-heading">
+                <div>
+                  <p class="kicker">Información</p>
+                  <h3 id="admin-page-title">Página</h3>
+                </div>
+                <span>Datos de contacto y portada</span>
+              </div>
+              <div class="admin-page-grid">
+                <label class="admin-field">
+                  <span>Título del lanzamiento</span>
+                  <input data-admin-release-title name="release-title" type="text" required />
+                </label>
+                <label class="admin-field">
+                  <span>Instagram</span>
+                  <input data-admin-instagram name="instagram" type="url" required />
+                </label>
+                <label class="admin-field">
+                  <span>WhatsApp de pedidos</span>
+                  <input data-admin-whatsapp name="whatsapp" type="tel" inputmode="tel" required />
+                </label>
+              </div>
+            </section>
+
+            <div class="admin-actions">
+              <p class="admin-status" data-admin-status aria-live="polite">Sin cambios pendientes.</p>
+              <div class="admin-action-buttons">
+                <button class="admin-secondary-button" data-admin-draft type="button">Guardar borrador</button>
+                <button class="admin-publish-button" data-admin-publish type="button">Publicar cambios</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
     </div>

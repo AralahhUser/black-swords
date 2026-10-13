@@ -82,6 +82,7 @@ img {
 }
 
 .intro-screen.is-hidden {
+  display: none;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
@@ -1373,4 +1374,347 @@ img {
 
 @media (max-width: 380px) {
   .cover-heading { font-size: 30px; }
+}
+
+.product-stock {
+  min-height: 18px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.product-card.sold-out .product-buy,
+.product-buy:disabled {
+  border-color: var(--line);
+  background: var(--mist);
+  color: var(--muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-link {
+  color: var(--muted);
+  transition: color .2s ease;
+}
+
+.admin-link:hover,
+.admin-link:focus-visible {
+  color: var(--orange);
+}
+
+body.admin-active {
+  overflow: hidden;
+}
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(23,23,23,.56);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+
+.admin-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.admin-panel {
+  position: relative;
+  width: min(1040px, 100%);
+  max-height: calc(100svh - 32px);
+  overflow: auto;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--coal);
+  background: var(--paper);
+  box-shadow: 0 28px 80px rgba(23,23,23,.3);
+}
+
+.admin-auth-view {
+  width: min(440px, 100%);
+  margin: 0 auto;
+  padding: 36px 0;
+}
+
+.admin-panel h2,
+.admin-panel h3 {
+  margin: 0;
+  color: var(--coal);
+  font-weight: 700;
+  line-height: .86;
+}
+
+.admin-panel h2 {
+  max-width: 660px;
+  font-size: clamp(48px, 7vw, 84px);
+}
+
+.admin-panel h3 {
+  font-size: clamp(30px, 4vw, 46px);
+}
+
+.admin-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+.admin-close:hover,
+.admin-close:focus-visible,
+.admin-logout:hover,
+.admin-logout:focus-visible,
+.admin-remove-button:hover,
+.admin-remove-button:focus-visible {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.admin-auth-copy {
+  margin: 14px 0 24px;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: none;
+}
+
+.admin-auth-form,
+.admin-form,
+.admin-page-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.admin-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.admin-field > span,
+.admin-toggle > span {
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.admin-field input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--warm);
+  color: var(--coal);
+  padding: 11px 13px;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  outline: none;
+  text-transform: none;
+}
+
+.admin-field input:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232,111,25,.13);
+}
+
+.admin-submit,
+.admin-publish-button,
+.admin-secondary-button,
+.admin-small-button,
+.admin-logout,
+.admin-remove-button {
+  border: 1px solid var(--coal);
+  border-radius: 0;
+  font-weight: 700;
+  line-height: .9;
+  text-transform: uppercase;
+}
+
+.admin-submit,
+.admin-publish-button {
+  padding: 14px 22px;
+  background: var(--coal);
+  color: var(--warm);
+  font-size: 20px;
+}
+
+.admin-submit:hover,
+.admin-publish-button:hover,
+.admin-submit:focus-visible,
+.admin-publish-button:focus-visible {
+  border-color: var(--orange);
+  background: var(--orange);
+  outline: none;
+}
+
+.admin-status {
+  min-height: 18px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: .95;
+  text-transform: none;
+}
+
+.admin-status.is-valid { color: #34713d; }
+.admin-status.is-invalid { color: #a32626; }
+
+.admin-heading,
+.admin-section-heading,
+.admin-actions,
+.admin-action-buttons {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-heading {
+  align-items: start;
+  margin-bottom: 28px;
+  padding-right: 96px;
+}
+
+.admin-logout {
+  padding: 10px 13px;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.admin-section {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+.admin-section-heading {
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.admin-section-heading > span {
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: .9;
+}
+
+.admin-product-list,
+.admin-discount-list {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-product-row,
+.admin-discount-row {
+  display: grid;
+  align-items: end;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: var(--warm);
+}
+
+.admin-product-row {
+  grid-template-columns: minmax(180px, 1.6fr) minmax(120px, .65fr) minmax(120px, .65fr);
+}
+
+.admin-discount-row {
+  grid-template-columns: minmax(160px, 1.3fr) minmax(120px, .6fr) auto auto;
+}
+
+.admin-small-button,
+.admin-secondary-button,
+.admin-remove-button {
+  padding: 10px 13px;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--coal);
+  font-size: 15px;
+}
+
+.admin-small-button:hover,
+.admin-small-button:focus-visible,
+.admin-secondary-button:hover,
+.admin-secondary-button:focus-visible {
+  border-color: var(--orange);
+  color: var(--orange);
+  outline: none;
+}
+
+.admin-remove-button {
+  color: var(--muted);
+}
+
+.admin-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.admin-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--orange);
+}
+
+.admin-page-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.admin-actions {
+  align-items: center;
+  padding-top: 24px;
+}
+
+.admin-action-buttons {
+  align-items: center;
+  justify-content: end;
+}
+
+@media (max-width: 700px) {
+  .admin-modal { padding: 10px; }
+  .admin-panel { max-height: calc(100svh - 20px); padding: 26px 18px 22px; }
+  .admin-heading { padding-right: 72px; }
+  .admin-section-heading,
+  .admin-actions { align-items: start; flex-direction: column; }
+  .admin-product-row,
+  .admin-discount-row,
+  .admin-page-grid { grid-template-columns: 1fr 1fr; }
+  .admin-product-row .admin-field:first-child,
+  .admin-discount-row .admin-field:first-child { grid-column: 1 / -1; }
+  .admin-toggle { justify-content: start; }
+  .admin-action-buttons { width: 100%; flex-direction: column-reverse; align-items: stretch; }
+  .admin-secondary-button,
+  .admin-publish-button { width: 100%; }
+}
+
+@media (max-width: 420px) {
+  .admin-product-row,
+  .admin-discount-row,
+  .admin-page-grid { grid-template-columns: 1fr; }
+  .admin-discount-row .admin-field:first-child { grid-column: auto; }
+  .admin-toggle { min-height: 34px; }
 }
