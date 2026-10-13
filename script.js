@@ -14,19 +14,24 @@ const paymentWhatsappNumber = "51947178845";
 let checkoutTrigger = null;
 let introClosing = false;
 const regularPrice = 129.00;
-const discountRate = 0.10;
-const discountCodes = new Set(["calitos", "pollitoaaron", "alesso69", "italo"]);
+const discountRates = new Map([
+  ["calitos", 0.12],
+  ["pollitoaaron", 0.10],
+  ["alesso69", 0.10],
+  ["italo", 0.10],
+]);
 
 const updateCheckoutPrice = () => {
   const code = discountCodeInput?.value.trim().toLowerCase() || "";
-  const applied = discountCodes.has(code);
+  const discountRate = discountRates.get(code);
+  const applied = discountRate !== undefined;
   const price = applied ? regularPrice * (1 - discountRate) : regularPrice;
   if (checkoutPrice) checkoutPrice.value = "S/ " + price.toFixed(2);
   if (discountStatus) {
     discountStatus.textContent = code && !applied
       ? "Código no válido"
       : applied
-        ? "Descuento aplicado: 10% · S/ " + price.toFixed(2)
+        ? "Descuento aplicado: " + Math.round(discountRate * 100) + "% · S/ " + price.toFixed(2)
         : "";
     discountStatus.classList.toggle("is-valid", applied);
     discountStatus.classList.toggle("is-invalid", Boolean(code) && !applied);
