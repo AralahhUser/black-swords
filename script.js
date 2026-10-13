@@ -13,20 +13,20 @@ const checkoutClose = document.querySelector("[data-checkout-close]");
 const paymentWhatsappNumber = "51947178845";
 let checkoutTrigger = null;
 let introClosing = false;
-const regularPrice = 119.90;
-const discountedPrice = 99.00;
+const regularPrice = 129.00;
+const discountRate = 0.10;
 const discountCodes = new Set(["calitos", "pollitoaaron", "alesso69", "italo"]);
 
 const updateCheckoutPrice = () => {
   const code = discountCodeInput?.value.trim().toLowerCase() || "";
   const applied = discountCodes.has(code);
-  const price = applied ? discountedPrice : regularPrice;
+  const price = applied ? regularPrice * (1 - discountRate) : regularPrice;
   if (checkoutPrice) checkoutPrice.value = "S/ " + price.toFixed(2);
   if (discountStatus) {
     discountStatus.textContent = code && !applied
       ? "Código no válido"
       : applied
-        ? "Descuento aplicado: S/ 99.00"
+        ? "Descuento aplicado: 10% · S/ " + price.toFixed(2)
         : "";
     discountStatus.classList.toggle("is-valid", applied);
     discountStatus.classList.toggle("is-invalid", Boolean(code) && !applied);
