@@ -1,5 +1,5 @@
-import { createAdminUser, createSessionCookie, getAdminUser, verifyPassword } from "../_lib/auth.js";
-import { ensureSchema } from "../_lib/db.js";
+import { createAdminUser, createSessionCookie, verifyPassword } from "../_lib/auth.js";
+import { ensureSchema, getAdminUser } from "../_lib/db.js";
 import { json, methodNotAllowed, readJson } from "../_lib/http.js";
 
 export default async function handler(req, res) {
