@@ -11,7 +11,7 @@ DATABASE_URL=postgresql://...
 ADMIN_SESSION_SECRET=<long-random-secret>
 ```
 
-`DATABASE_URL` should come from a Neon Postgres Marketplace integration. `ADMIN_SESSION_SECRET` signs the HTTP-only admin session cookie and must never be exposed to the browser.
+`DATABASE_URL` should come from a Neon Postgres Marketplace integration. The production project is connected to Neon through Vercel. `ADMIN_SESSION_SECRET` signs the HTTP-only admin session cookie and must never be exposed to the browser.
 
 ## First admin setup
 
