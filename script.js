@@ -157,6 +157,21 @@ const updateCheckoutPrice = () => {
 
 applyStoreConfig(publishedConfig);
 
+const loadPublicConfig = async () => {
+  try {
+    const response = await fetch("/api/public-config", { credentials: "same-origin", cache: "no-store" });
+    if (!response.ok) throw new Error(`Config request failed: ${response.status}`);
+    publishedConfig = normalizeStoreConfig(await response.json());
+    draftConfig = cloneConfig(publishedConfig);
+    applyStoreConfig(publishedConfig);
+    updateCheckoutPrice();
+  } catch (error) {
+    console.warn("Black Swords backend unavailable; using local defaults.", error);
+  }
+};
+
+loadPublicConfig();
+
 const closeIntro = () => {
   if (!intro || introClosing || intro.classList.contains("is-hidden")) return;
   introClosing = true;
@@ -471,37 +486,58 @@ const readAdminForm = () => {
 };
 
 const saveAdminDraft = () => {
-  draftConfig = readAdminForm();
-  window.localStorage.setItem(adminDraftKey, JSON.stringify(draftConfig));
-  setAdminStatus("Borrador guardado.", "valid");
-  return draftConfig;
+  const config = readAdminForm();
+  return fetch("/api/admin/config", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ mode: "draft", config }),
+  }).then(async (response) => {
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "No se pudo guardar el borrador.");
+    draftConfig = normalizeStoreConfig(payload.config || config);
+    setAdminStatus("Borrador guardado en la base de datos.", "valid");
+    return draftConfig;
+  }).catch((error) => {
+    setAdminStatus(error.message || "Backend no disponible.", "invalid");
+    throw error;
+  });
 };
 
-const publishAdminChanges = () => {
+const publishAdminChanges = async () => {
   if (!window.confirm("¿Dar OK y publicar estos cambios en esta tienda?")) return;
-  publishedConfig = saveAdminDraft();
-  window.localStorage.setItem(storeConfigKey, JSON.stringify(publishedConfig));
-  applyStoreConfig(publishedConfig);
-  updateCheckoutPrice();
-  setAdminStatus("Cambios publicados.", "valid");
+  const config = readAdminForm();
+  try {
+    const response = await fetch("/api/admin/config", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "publish", config }),
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "No se pudo publicar.");
+    publishedConfig = normalizeStoreConfig(payload.config || config);
+    draftConfig = cloneConfig(publishedConfig);
+    applyStoreConfig(publishedConfig);
+    updateCheckoutPrice();
+    setAdminStatus("Cambios publicados en la base de datos.", "valid");
+  } catch (error) {
+    setAdminStatus(error.message || "Backend no disponible.", "invalid");
+  }
 };
 
-const hashCredential = async (value) => {
-  if (window.crypto?.subtle && window.TextEncoder) {
-    const data = new TextEncoder().encode(value);
-    const buffer = await window.crypto.subtle.digest("SHA-256", data);
-    return [...new Uint8Array(buffer)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
-  }
-  let hash = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    hash ^= value.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return `fallback-${hash >>> 0}`;
-};
+let adminSetupMode = false;
 
-const showAdminAuth = () => {
-  const isSetup = !readStored(adminAuthKey);
+const showAdminAuth = async () => {
+  let isSetup = false;
+  try {
+    const response = await fetch("/api/admin/auth", { credentials: "same-origin", cache: "no-store" });
+    if (!response.ok) throw new Error("Backend no disponible.");
+    isSetup = !(await response.json()).configured;
+  } catch (error) {
+    setAuthStatus(error.message || "Backend no disponible.", "invalid");
+  }
+  adminSetupMode = isSetup;
   adminAuthView.hidden = false;
   adminDashboard.hidden = true;
   adminAuthForm?.reset();
@@ -518,8 +554,18 @@ const showAdminDashboard = () => {
   adminAuthenticated = true;
   adminAuthView.hidden = true;
   adminDashboard.hidden = false;
-  renderAdminForm(draftConfig);
-  setAdminStatus("Sin cambios pendientes.");
+  fetch("/api/admin/config", { credentials: "same-origin", cache: "no-store" })
+    .then(async (response) => {
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "No se pudo cargar la configuración.");
+      draftConfig = normalizeStoreConfig(payload);
+      renderAdminForm(draftConfig);
+      setAdminStatus("Configuración cargada desde la base de datos.");
+    })
+    .catch((error) => {
+      renderAdminForm(draftConfig);
+      setAdminStatus(error.message || "Backend no disponible.", "invalid");
+    });
 };
 
 const openAdmin = (event) => {
@@ -550,35 +596,45 @@ adminAuthForm?.addEventListener("submit", async (event) => {
   const id = String(document.querySelector("[data-admin-id]")?.value || "").trim();
   const password = String(document.querySelector("[data-admin-password]")?.value || "");
   const confirmPassword = String(document.querySelector("[data-admin-confirm]")?.value || "");
-  const savedAuth = readStored(adminAuthKey);
   if (id.length < 3 || password.length < 8) {
     setAuthStatus("Usa un ID de 3 caracteres y una contraseña de 8 como mínimo.", "invalid");
     return;
   }
-  if (!savedAuth) {
+  if (adminSetupMode) {
     if (password !== confirmPassword) {
       setAuthStatus("Las contraseñas no coinciden.", "invalid");
       return;
     }
-    window.localStorage.setItem(adminAuthKey, JSON.stringify({ id, passwordHash: await hashCredential(password) }));
+  }
+  try {
+    const response = await fetch("/api/admin/auth", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: adminSetupMode ? "setup" : "login", id, password }),
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "No se pudo iniciar sesión.");
+    setAuthStatus("");
     showAdminDashboard();
-    return;
+  } catch (error) {
+    setAuthStatus(error.message || "No se pudo iniciar sesión.", "invalid");
   }
-  const passwordHash = await hashCredential(password);
-  if (id !== savedAuth.id || passwordHash !== savedAuth.passwordHash) {
-    setAuthStatus("ID o contraseña incorrectos.", "invalid");
-    return;
-  }
-  showAdminDashboard();
 });
 
 adminForm?.addEventListener("input", () => {
   setAdminStatus("Cambios sin guardar.");
 });
 
-adminDraftButton?.addEventListener("click", saveAdminDraft);
+adminDraftButton?.addEventListener("click", () => { saveAdminDraft().catch(() => {}); });
 adminPublishButton?.addEventListener("click", publishAdminChanges);
-adminLogout?.addEventListener("click", () => {
+adminLogout?.addEventListener("click", async () => {
+  await fetch("/api/admin/auth", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "logout" }),
+  }).catch(() => {});
   adminAuthenticated = false;
   showAdminAuth();
 });
