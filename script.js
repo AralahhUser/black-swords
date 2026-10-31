@@ -416,11 +416,26 @@ const renderAdminProductList = (config) => {
     const row = document.createElement("div");
     row.className = "admin-product-row";
     row.dataset.productId = product.id;
+    const stockField = createAdminField({
+      label: "Stock (unidades)",
+      value: product.stock === null ? "" : product.stock,
+      type: "number",
+      placeholder: "Ilimitado",
+      dataset: { adminProductStock: "" },
+    });
+    const stockInput = stockField.querySelector("input");
+    if (stockInput) {
+      stockInput.min = "0";
+      stockInput.step = "1";
+      stockInput.inputMode = "numeric";
+      stockInput.setAttribute("aria-label", `Stock de ${product.name}`);
+    }
     row.append(
       createAdminField({ label: "Producto", value: product.name, dataset: { adminProductName: "" } }),
       createAdminField({ label: "Precio (S/)", value: product.price.toFixed(2), type: "number", dataset: { adminProductPrice: "" } }),
-      createAdminField({ label: "Stock", value: product.stock === null ? "" : product.stock, type: "number", placeholder: "Sin límite", dataset: { adminProductStock: "" } }),
+      stockField,
     );
+    adminProductList.append(row);
   });
 };
 
